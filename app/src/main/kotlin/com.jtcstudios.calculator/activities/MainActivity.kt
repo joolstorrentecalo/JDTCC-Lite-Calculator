@@ -67,7 +67,6 @@ class MainActivity : SimpleActivity(), Calculator {
         storeStateVariables()
         updateViewColors(calculator_holder, getProperTextColor())
         setupDecimalSeparator()
-        checkWhatsNewDialog()
         checkAppOnSDCard()
     }
 
@@ -114,8 +113,6 @@ class MainActivity : SimpleActivity(), Calculator {
         main_toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.history -> showHistory()
-                R.id.settings -> launchSettings()
-                R.id.about -> launchAbout()
                 else -> return@setOnMenuItemClickListener false
             }
             return@setOnMenuItemClickListener true
@@ -145,28 +142,6 @@ class MainActivity : SimpleActivity(), Calculator {
         }
     }
 
-    private fun launchSettings() {
-        hideKeyboard()
-        startActivity(Intent(applicationContext, SettingsActivity::class.java))
-    }
-
-    private fun launchAbout() {
-        val licenses = LICENSE_AUTOFITTEXTVIEW
-
-        val faqItems = arrayListOf(
-            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
-            FAQItem(R.string.faq_1_title_commons, R.string.faq_1_text_commons),
-            FAQItem(R.string.faq_4_title_commons, R.string.faq_4_text_commons)
-        )
-
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
-        }
-
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
-    }
-
     private fun getButtonIds() = arrayOf(btn_decimal, btn_0, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9)
 
     private fun copyToClipboard(copyResult: Boolean): Boolean {
@@ -185,14 +160,6 @@ class MainActivity : SimpleActivity(), Calculator {
 
     override fun showNewResult(value: String, context: Context) {
         result.text = value
-    }
-
-    private fun checkWhatsNewDialog() {
-        arrayListOf<Release>().apply {
-            add(Release(18, R.string.release_18))
-            add(Release(28, R.string.release_28))
-            checkWhatsNew(this, BuildConfig.VERSION_CODE)
-        }
     }
 
     override fun showNewFormula(value: String, context: Context) {

@@ -21,10 +21,10 @@ import kotlinx.android.synthetic.main.widget_config.*
 
 class WidgetConfigureActivity : SimpleActivity() {
     private var mBgAlpha = 0f
-    private var mWidgetId = 0
-    private var mBgColor = 0
-    private var mTextColor = 0
-    private var mBgColorWithoutTransparency = 0
+    private var mWidgetId = 100
+    private var mBgColor = 100
+    private var mTextColor = 100
+    private var mBgColorWithoutTransparency = 100
     private var mFeatureLockedDialog: FeatureLockedDialog? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {

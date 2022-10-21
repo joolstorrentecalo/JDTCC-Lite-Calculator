@@ -13,11 +13,11 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.simplemobiletools.calculator"
-        minSdkVersion 21
+        applicationId "com.jtcstudios.calculator"
+        minSdkVersion 29
         targetSdkVersion 33
-        versionCode 56
-        versionName "5.10.2"
+        versionCode 1
+        versionName "1.0.0"
         setProperty("archivesBaseName", "calculator")
     }
 
